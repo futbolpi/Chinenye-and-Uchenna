@@ -1,0 +1,14 @@
+// Optionally track staff/authorized clerks (mirror of Clerk user id)
+model User {
+    id        String   @id // clerkId
+    name      String?
+    role      UserRole @default(GUEST)
+    createdAt DateTime @default(now())
+}
+
+enum UserRole {
+    ADMIN
+    COUPLE
+    GUEST
+    STAFF
+}

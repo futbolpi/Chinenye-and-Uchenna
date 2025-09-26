@@ -1,0 +1,33 @@
+enum InviteType {
+    UNLIMITED
+    SINGLE_USE
+}
+
+model Invite {
+    id            String     @id @default(cuid())
+    type          InviteType
+    guestName     String
+    phoneHash     String? // hashed phone for SINGLE invites, optional for UNLIMITED
+    email         String? // optional
+    notes         String?
+    redeemedCount Int        @default(0) // Only relevant for SINGLE_USE, set during creation and used when 0
+
+    scanLogs ScanLog[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model ScanLog {
+    id                  String  @id @default(cuid())
+    ip                  String?
+    userAgent           String?
+    phoneEnteredSnippet String? // last 4 digits only — do not store full phone
+    success             Boolean
+    staffClerkId        String? // if staff scanned to mark used
+
+    inviteId String
+    invite   Invite @relation(fields: [inviteId], references: [id])
+
+    attemptedAt DateTime @default(now())
+}
