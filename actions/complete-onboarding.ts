@@ -3,6 +3,7 @@
 import { clerkClient, currentUser } from "@clerk/nextjs/server";
 
 import { getUserRole } from "@/lib/utils";
+import prisma from "@/lib/prisma";
 
 export const completeOnboarding = async () => {
   const user = await currentUser();
@@ -21,6 +22,11 @@ export const completeOnboarding = async () => {
         onboardingComplete: true,
         role,
       },
+    });
+    await prisma.user.upsert({
+      create: { id: user.id, role },
+      update: {},
+      where: { id: user.id },
     });
     return { message: res.publicMetadata };
   } catch (err) {
