@@ -2,29 +2,17 @@ import { notFound } from "next/navigation";
 import { type SearchParams } from "nuqs/server";
 import { auth } from "@clerk/nextjs/server";
 
-import prisma from "@/lib/prisma";
+import { staffRoles } from "@/config/constants";
 import { InviteDisplay } from "./_components/invite-display";
 import { PhoneVerificationForm } from "./_components/phone-verification-form";
 import { WeddingDetails } from "./_components/wedding-details";
 import { FloatingDecorations } from "./_components/floating-decorations";
 import { searchParamsCache } from "./searchparams";
-import { staffRoles } from "@/config/constants";
+import { getInvite } from "./services";
 
 interface InvitePageProps {
   params: Promise<{ id: string }>;
   searchParams: Promise<SearchParams>;
-}
-
-async function getInvite(id: string) {
-  try {
-    const invite = await prisma.invite.findUnique({
-      where: { id },
-    });
-    return invite;
-  } catch (error) {
-    console.error("Error fetching invite:", error);
-    return null;
-  }
 }
 
 export default async function InvitePage({

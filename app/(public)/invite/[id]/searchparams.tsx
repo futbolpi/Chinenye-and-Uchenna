@@ -6,9 +6,11 @@ export const inviteParamsParsers = {
   phoneNumber: parseAsString.withDefault(""),
 };
 
+export const inviteParamsUrlKeys = {
+  // Remap them to read from shorter keys in the URL
+  phoneNumber: "phone",
+};
+
 export const searchParamsCache = createSearchParamsCache(inviteParamsParsers, {
-  urlKeys: {
-    // Remap them to read from shorter keys in the URL
-    phoneNumber: "phone",
-  },
+  urlKeys: inviteParamsUrlKeys,
 });

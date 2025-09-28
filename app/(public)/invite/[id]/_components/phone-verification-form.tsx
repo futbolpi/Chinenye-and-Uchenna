@@ -27,7 +27,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { verifyInvitePhone } from "@/actions/verify-invite-phone";
-import { inviteParamsParsers } from "../searchparams";
+import { inviteParamsParsers, inviteParamsUrlKeys } from "../searchparams";
 
 const phoneSchema = z.object({
   phoneNumber: z.string().min(10, "Phone number must be at least 10 digits"),
@@ -43,8 +43,9 @@ export function PhoneVerificationForm({
   guestName,
 }: PhoneVerificationFormProps) {
   const [isPending, startTransition] = useTransition();
-
-  const [{ phoneNumber }, setParams] = useQueryStates(inviteParamsParsers);
+  const [{ phoneNumber }, setParams] = useQueryStates(inviteParamsParsers, {
+    urlKeys: inviteParamsUrlKeys,
+  });
 
   const form = useForm<z.infer<typeof phoneSchema>>({
     resolver: zodResolver(phoneSchema),
