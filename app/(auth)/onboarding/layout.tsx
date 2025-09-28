@@ -1,9 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-import { UserRole } from "@/lib/generated/prisma/enums";
-
-const adminOrCouple: UserRole[] = ["ADMIN", "COUPLE"];
+import { adminOrCouple } from "@/config/constants";
 
 export default async function RootLayout({
   children,
@@ -12,8 +10,8 @@ export default async function RootLayout({
 }) {
   const { sessionClaims } = await auth();
 
-  if (!!sessionClaims?.metadata.role) {
-    if (adminOrCouple.includes(sessionClaims.metadata.role)) {
+  if (!!sessionClaims?.role) {
+    if (adminOrCouple.includes(sessionClaims.role)) {
       redirect("/dashboard");
     }
     redirect("/");

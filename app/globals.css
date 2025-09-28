@@ -118,4 +118,38 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom prose styles for story section */
+  .prose {
+    @apply text-muted-foreground;
+  }
+
+  .prose p {
+    @apply text-balance;
+  }
+}
+
+/* Custom animations for floating elements */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 4s ease-in-out infinite;
+  animation-delay: 1s;
 }
