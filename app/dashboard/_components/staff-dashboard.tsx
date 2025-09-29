@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Plus, Users, Calendar, CheckCircle, LogOut } from "lucide-react";
+
 import {
   Card,
   CardContent,
@@ -10,18 +12,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Plus,
-  QrCode,
-  Users,
-  Calendar,
-  CheckCircle,
-  LogOut,
-} from "lucide-react";
 import { Invite } from "@/lib/generated/prisma/client";
 import { CreateInviteDialog } from "./create-invite-dialog";
 import { QRCodeDialog } from "./qr-code-dialog";
+import { InvitesDataTable } from "./invites-data-table";
 
 interface StaffDashboardProps {
   initialInvites: Invite[];
@@ -168,80 +162,17 @@ export function StaffDashboard({ initialInvites }: StaffDashboardProps) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {invites.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
-                No invites created yet. Create your first invite to get started.
-              </div>
-            ) : (
-              invites.map((invite) => (
-                <div
-                  key={invite.id}
-                  className="flex items-center justify-between p-4 border border-border/50 rounded-lg bg-card/50"
-                >
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-3">
-                      <h3 className="font-medium text-foreground">
-                        {invite.guestName}
-                      </h3>
-                      <Badge
-                        variant={
-                          invite.type === "UNLIMITED" ? "secondary" : "default"
-                        }
-                        className={
-                          invite.type === "UNLIMITED"
-                            ? "bg-secondary text-secondary-foreground"
-                            : "bg-primary text-primary-foreground"
-                        }
-                      >
-                        {invite.type === "UNLIMITED"
-                          ? "Unlimited"
-                          : "Single Use"}
-                      </Badge>
-                      {invite.redeemedCount < 1 && (
-                        <Badge
-                          variant="outline"
-                          className="text-accent border-accent"
-                        >
-                          Used
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      Created {new Date(invite.createdAt).toLocaleDateString()}
-                      {invite.phoneHash && (
-                        <span className="ml-2">• {invite.phoneHash}</span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleGenerateQR(invite)}
-                      className="border-primary/20 text-primary hover:bg-primary/10"
-                    >
-                      <QrCode className="mr-2 h-4 w-4" />
-                      QR Code
-                    </Button>
-
-                    {invite.type === "SINGLE_USE" &&
-                      invite.redeemedCount > 0 && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handleMarkAsUsed(invite.id)}
-                          className="border-accent/20 text-accent hover:bg-accent/10"
-                        >
-                          Mark Used
-                        </Button>
-                      )}
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
+          {invites.length === 0 ? (
+            <div className="text-center py-8 text-muted-foreground">
+              No invites created yet. Create your first invite to get started.
+            </div>
+          ) : (
+            <InvitesDataTable
+              data={invites}
+              onGenerateQR={handleGenerateQR}
+              onMarkAsUsed={handleMarkAsUsed}
+            />
+          )}
         </CardContent>
       </Card>
 
