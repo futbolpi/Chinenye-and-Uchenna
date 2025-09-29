@@ -22,14 +22,14 @@ interface StaffDashboardProps {
   initialInvites: Invite[];
 }
 
-export function StaffDashboard({ initialInvites }: StaffDashboardProps) {
-  const [invites, setInvites] = useState<Invite[]>(initialInvites);
+export function StaffDashboard({
+  initialInvites: invites,
+}: StaffDashboardProps) {
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [qrDialogOpen, setQrDialogOpen] = useState(false);
   const [selectedInvite, setSelectedInvite] = useState<Invite | null>(null);
 
-  const handleInviteCreated = (newInvite: Invite) => {
-    setInvites((prev) => [newInvite, ...prev]);
+  const handleInviteCreated = () => {
     setCreateDialogOpen(false);
   };
 
@@ -48,11 +48,6 @@ export function StaffDashboard({ initialInvites }: StaffDashboardProps) {
 
       if (response.ok) {
         const updatedInvite = await response.json();
-        setInvites((prev) =>
-          prev.map((invite) =>
-            invite.id === inviteId ? updatedInvite : invite
-          )
-        );
       }
     } catch (error) {
       console.error("Failed to mark invite as used:", error);
