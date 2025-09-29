@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Plus, Users, Calendar, CheckCircle, LogOut } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
+import { Plus } from "lucide-react";
 
 import {
   Card,
@@ -16,6 +16,7 @@ import { Invite } from "@/lib/generated/prisma/client";
 import { CreateInviteDialog } from "./create-invite-dialog";
 import { QRCodeDialog } from "./qr-code-dialog";
 import { InvitesDataTable } from "./invites-data-table";
+import StatsCard from "./stats-card";
 
 interface StaffDashboardProps {
   initialInvites: Invite[];
@@ -26,12 +27,6 @@ export function StaffDashboard({ initialInvites }: StaffDashboardProps) {
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [qrDialogOpen, setQrDialogOpen] = useState(false);
   const [selectedInvite, setSelectedInvite] = useState<Invite | null>(null);
-  const router = useRouter();
-
-  const handleLogout = () => {
-    localStorage.removeItem("auth-token");
-    router.push("/login");
-  };
 
   const handleInviteCreated = (newInvite: Invite) => {
     setInvites((prev) => [newInvite, ...prev]);
@@ -84,60 +79,15 @@ export function StaffDashboard({ initialInvites }: StaffDashboardProps) {
             Create and manage QR code invitations for your special day
           </p>
         </div>
-        <Button
-          variant="outline"
-          onClick={handleLogout}
-          className="border-border/50 text-muted-foreground hover:text-foreground bg-transparent"
-        >
-          <LogOut className="mr-2 h-4 w-4" />
-          Sign Out
-        </Button>
+        <UserButton />
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="border-border/50 shadow-sm">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              Total Invites
-            </CardTitle>
-            <Users className="h-4 w-4 text-primary" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-foreground">
-              {totalInvites}
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="border-border/50 shadow-sm">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              Used Invites
-            </CardTitle>
-            <CheckCircle className="h-4 w-4 text-accent" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-foreground">
-              {usedInvites}
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="border-border/50 shadow-sm">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              Single Use
-            </CardTitle>
-            <Calendar className="h-4 w-4 text-primary" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-foreground">
-              {singleUseInvites}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      <StatsCard
+        singleUseInvites={singleUseInvites}
+        totalInvites={totalInvites}
+        usedInvites={usedInvites}
+      />
 
       {/* Actions */}
       <div className="flex justify-center">
