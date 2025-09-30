@@ -1,7 +1,8 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal, QrCode, CheckCircle, ArrowUpDown } from "lucide-react";
+import { MoreHorizontal, QrCode, ArrowUpDown, Pen } from "lucide-react";
+import { useMemo } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,16 +15,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { Invite } from "@/lib/generated/prisma/client";
-import { useMemo } from "react";
 import MarkAsUsed from "./mark-as-used";
 
 type InviteColumnsProps = {
   onGenerateQR: (invite: Invite) => void;
+  handleUpdateInvite: (invite: Invite) => void;
 };
 
 const getColumns: ({
   onGenerateQR,
-}: InviteColumnsProps) => ColumnDef<Invite>[] = ({ onGenerateQR }) => {
+}: InviteColumnsProps) => ColumnDef<Invite>[] = ({
+  onGenerateQR,
+  handleUpdateInvite,
+}) => {
   return [
     {
       accessorKey: "guestName",
@@ -157,6 +161,13 @@ const getColumns: ({
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem
+                onClick={() => handleUpdateInvite(invite)}
+                className="flex items-center gap-2"
+              >
+                <Pen className="h-4 w-4" />
+                Update Invite
+              </DropdownMenuItem>
+              <DropdownMenuItem
                 onClick={() => onGenerateQR(invite)}
                 className="flex items-center gap-2"
               >
@@ -172,9 +183,12 @@ const getColumns: ({
   ];
 };
 
-export const useInviteColumns = ({ onGenerateQR }: InviteColumnsProps) => {
+export const useInviteColumns = ({
+  onGenerateQR,
+  handleUpdateInvite,
+}: InviteColumnsProps) => {
   const columns = useMemo(
-    () => getColumns({ onGenerateQR }),
+    () => getColumns({ onGenerateQR, handleUpdateInvite }),
     [getColumns, onGenerateQR]
   );
   return columns;

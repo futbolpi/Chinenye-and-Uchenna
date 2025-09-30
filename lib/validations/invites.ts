@@ -47,6 +47,11 @@ export const createInviteSchema = z
     }
   });
 
+export const updateInviteSchema = createInviteSchema.safeExtend({
+  id: z.string(),
+});
+
 export type PhoneVerificationSchema = z.infer<typeof phoneVerificationSchema>;
 export type MarkInviteUsedSchema = z.infer<typeof markInviteUsedSchema>;
 export type CreateInviteSchema = z.infer<typeof createInviteSchema>;
+export type UpdateInviteSchema = z.infer<typeof updateInviteSchema>;

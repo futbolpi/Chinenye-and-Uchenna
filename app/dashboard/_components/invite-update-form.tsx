@@ -5,10 +5,9 @@ import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-import { createInvite } from "@/actions/create-invite";
 import {
-  createInviteSchema,
-  CreateInviteSchema,
+  updateInviteSchema,
+  UpdateInviteSchema,
 } from "@/lib/validations/invites";
 import {
   Form,
@@ -22,37 +21,47 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
+import { updateInvite } from "@/actions/invites/update-invite";
 
-interface InviteFormProps {
+interface InviteUpdateFormProps {
   postAction: () => void;
+  defaultValues: {
+    type: "SINGLE_USE" | "UNLIMITED";
+    guestName: string;
+    phoneHash?: string | undefined;
+    id: string;
+  };
 }
 
-const InviteForm = ({ postAction }: InviteFormProps) => {
+const InviteUpdateForm = ({
+  postAction,
+  defaultValues,
+}: InviteUpdateFormProps) => {
   const [isLoading, startTransition] = useTransition();
 
-  const form = useForm<CreateInviteSchema>({
-    resolver: zodResolver(createInviteSchema),
-    defaultValues: { guestName: "", type: "UNLIMITED", phoneHash: "" },
+  const form = useForm<UpdateInviteSchema>({
+    resolver: zodResolver(updateInviteSchema),
+    defaultValues,
   });
 
   const type = form.watch("type");
 
-  const handleSubmit = (data: CreateInviteSchema) => {
+  const handleSubmit = (data: UpdateInviteSchema) => {
     startTransition(async () => {
       try {
-        const response = await createInvite(data);
+        const response = await updateInvite(data);
 
         if (response.success) {
           toast.success(
-            response?.data?.message || "Invite was created successfully"
+            response?.data?.message || "Invite was updated successfully"
           );
           postAction();
         } else {
-          toast.error(response.error || "Failed to create invite");
-          console.error("Failed to create invite");
+          toast.error(response.error || "Failed to update invite");
+          console.error("Failed to update invite");
         }
       } catch (error) {
-        console.error("Error creating invite:", error);
+        console.error("Error updating invite:", error);
       }
     });
   };
@@ -165,7 +174,7 @@ const InviteForm = ({ postAction }: InviteFormProps) => {
             disabled={isLoading}
             className="bg-primary hover:bg-primary/90 text-primary-foreground"
           >
-            {isLoading ? "Creating..." : "Create Invitation"}
+            {isLoading ? "Updating..." : "Update Invitation"}
           </Button>
         </div>
       </form>
@@ -173,4 +182,4 @@ const InviteForm = ({ postAction }: InviteFormProps) => {
   );
 };
 
-export default InviteForm;
+export default InviteUpdateForm;

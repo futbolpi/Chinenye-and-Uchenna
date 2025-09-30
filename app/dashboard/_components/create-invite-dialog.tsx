@@ -15,18 +15,12 @@ interface CreateInviteDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onInviteCreated: () => void;
-  defaultValues?: {
-    type: "SINGLE_USE" | "UNLIMITED";
-    guestName: string;
-    phoneHash?: string | undefined;
-  };
 }
 
 export function CreateInviteDialog({
   open,
   onOpenChange,
   onInviteCreated,
-  defaultValues = { guestName: "", type: "UNLIMITED", phoneHash: "" },
 }: CreateInviteDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -40,10 +34,7 @@ export function CreateInviteDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <InviteForm
-          postAction={onInviteCreated}
-          defaultValues={defaultValues}
-        />
+        <InviteForm postAction={onInviteCreated} />
       </DialogContent>
     </Dialog>
   );

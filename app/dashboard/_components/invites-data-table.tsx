@@ -7,13 +7,15 @@ import { useInviteColumns } from "./use-invite-columns";
 interface InvitesDataTableProps {
   data: Invite[];
   onGenerateQR: (invite: Invite) => void;
+  handleUpdateInvite: (invite: Invite) => void;
 }
 
 export function InvitesDataTable({
   data,
   onGenerateQR,
+  handleUpdateInvite,
 }: InvitesDataTableProps) {
-  const columns = useInviteColumns({ onGenerateQR });
+  const columns = useInviteColumns({ onGenerateQR, handleUpdateInvite });
 
   return (
     <DataTable

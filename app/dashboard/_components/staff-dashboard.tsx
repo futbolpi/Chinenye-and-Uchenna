@@ -17,6 +17,7 @@ import { CreateInviteDialog } from "./create-invite-dialog";
 import { QRCodeDialog } from "./qr-code-dialog";
 import { InvitesDataTable } from "./invites-data-table";
 import StatsCard from "./stats-card";
+import { UpdateInviteDialog } from "./update-invite-dialog";
 
 interface StaffDashboardProps {
   initialInvites: Invite[];
@@ -27,6 +28,7 @@ export function StaffDashboard({
 }: StaffDashboardProps) {
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [qrDialogOpen, setQrDialogOpen] = useState(false);
+  const [updateDialogOpen, setUpdateDialogOpen] = useState(false);
   const [selectedInvite, setSelectedInvite] = useState<Invite | null>(null);
 
   const handleInviteCreated = () => {
@@ -36,6 +38,11 @@ export function StaffDashboard({
   const handleGenerateQR = (invite: Invite) => {
     setSelectedInvite(invite);
     setQrDialogOpen(true);
+  };
+
+  const handleUpdateInvite = (invite: Invite) => {
+    setSelectedInvite(invite);
+    setUpdateDialogOpen(true);
   };
 
   const totalInvites = invites.length;
@@ -96,7 +103,11 @@ export function StaffDashboard({
               No invites created yet. Create your first invite to get started.
             </div>
           ) : (
-            <InvitesDataTable data={invites} onGenerateQR={handleGenerateQR} />
+            <InvitesDataTable
+              data={invites}
+              onGenerateQR={handleGenerateQR}
+              handleUpdateInvite={handleUpdateInvite}
+            />
           )}
         </CardContent>
       </Card>
@@ -113,6 +124,15 @@ export function StaffDashboard({
         onOpenChange={setQrDialogOpen}
         invite={selectedInvite}
       />
+
+      {selectedInvite && (
+        <UpdateInviteDialog
+          defaultValues={selectedInvite}
+          onInviteUpdated={() => setUpdateDialogOpen(false)}
+          onOpenChange={setUpdateDialogOpen}
+          open={updateDialogOpen}
+        />
+      )}
     </div>
   );
 }
