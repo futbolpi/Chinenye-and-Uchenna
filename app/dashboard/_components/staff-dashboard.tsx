@@ -38,22 +38,6 @@ export function StaffDashboard({
     setQrDialogOpen(true);
   };
 
-  const handleMarkAsUsed = async (inviteId: string) => {
-    try {
-      const response = await fetch("/api/invites/mark-used", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ inviteId }),
-      });
-
-      if (response.ok) {
-        const updatedInvite = await response.json();
-      }
-    } catch (error) {
-      console.error("Failed to mark invite as used:", error);
-    }
-  };
-
   const totalInvites = invites.length;
   const usedInvites = invites.filter(
     (invite) => invite.redeemedCount < 1
@@ -112,11 +96,7 @@ export function StaffDashboard({
               No invites created yet. Create your first invite to get started.
             </div>
           ) : (
-            <InvitesDataTable
-              data={invites}
-              onGenerateQR={handleGenerateQR}
-              onMarkAsUsed={handleMarkAsUsed}
-            />
+            <InvitesDataTable data={invites} onGenerateQR={handleGenerateQR} />
           )}
         </CardContent>
       </Card>

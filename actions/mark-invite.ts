@@ -2,6 +2,7 @@
 
 import { auth } from "@clerk/nextjs/server";
 import { z } from "zod";
+import { revalidatePath } from "next/cache";
 
 import { ActionResult } from "@/types";
 import {
@@ -52,6 +53,8 @@ export async function markInviteAsUsed(
         redeemedCount: { decrement: 1 },
       },
     });
+
+    revalidatePath("/dashboard", "layout");
 
     return {
       success: true,
