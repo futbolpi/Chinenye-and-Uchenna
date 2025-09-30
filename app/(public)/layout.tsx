@@ -1,6 +1,7 @@
 import type React from "react";
 import { Heart } from "lucide-react";
 
+import { siteConfig } from "@/config/site";
 import Navbar from "./_components/navbar";
 
 export default function PublicLayout({
@@ -18,7 +19,7 @@ export default function PublicLayout({
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Heart className="h-5 w-5 text-primary" />
             <span className="font-serif text-lg text-foreground">
-              Chinenye & Uche
+              {siteConfig.name}
             </span>
           </div>
           <p className="text-sm text-muted-foreground">

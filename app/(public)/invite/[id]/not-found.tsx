@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { siteConfig } from "@/config/site";
 
 export default function InviteNotFound() {
   const fadeInUp = {
@@ -133,7 +134,7 @@ export default function InviteNotFound() {
                 className="text-sm"
                 style={{ color: "var(--muted-foreground)" }}
               >
-                Reach out to Chinenye & Uchenna if you need assistance with your
+                Reach out to {siteConfig.name} if you need assistance with your
                 invitation
               </p>
             </Card>

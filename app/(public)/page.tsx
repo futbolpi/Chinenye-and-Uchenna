@@ -5,6 +5,7 @@ import { Heart, Calendar, MapPin, Users, ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { siteConfig } from "@/config/site";
 
 export default function WeddingHomePage() {
   const fadeInUp = {
@@ -28,7 +29,7 @@ export default function WeddingHomePage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mt-16">
       {/* Navigation */}
 
       {/* Hero Section */}
@@ -51,7 +52,7 @@ export default function WeddingHomePage() {
             variants={fadeInUp}
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-light text-foreground mb-6 text-balance"
           >
-            Chinenye & Uche
+            {siteConfig.name}
           </motion.h1>
 
           <motion.p

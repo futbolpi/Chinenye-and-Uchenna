@@ -1,5 +1,6 @@
 "use client";
 
+import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 
@@ -19,7 +20,7 @@ const Navbar = () => {
           >
             <Heart className="h-6 w-6 text-primary" />
             <span className="font-serif text-xl font-semibold text-foreground">
-              Chinenye & Uche
+              {siteConfig.name}
             </span>
           </motion.div>
           <div className="hidden md:flex items-center space-x-8">
