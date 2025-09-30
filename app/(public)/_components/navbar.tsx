@@ -24,19 +24,19 @@ const Navbar = () => {
           </motion.div>
           <div className="hidden md:flex items-center space-x-8">
             <a
-              href="#story"
+              href="/#story"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               Our Story
             </a>
             <a
-              href="#details"
+              href="/#details"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               Details
             </a>
             <a
-              href="#rsvp"
+              href="/#rsvp"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               RSVP
