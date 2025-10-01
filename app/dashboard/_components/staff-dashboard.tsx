@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { UserButton } from "@clerk/nextjs";
 import { Plus } from "lucide-react";
 
 import {
@@ -65,7 +64,6 @@ export function StaffDashboard({
             Create and manage QR code invitations for your special day
           </p>
         </div>
-        <UserButton />
       </div>
 
       {/* Stats Cards */}
