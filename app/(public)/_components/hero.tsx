@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Heart } from "lucide-react";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
@@ -60,14 +61,21 @@ const Hero = () => {
           variants={fadeInUp}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
-          <Button size="lg" className="px-8 py-6 text-lg font-medium group">
-            View Our Invitation
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          <Button
+            size="lg"
+            asChild
+            className="px-8 py-6 text-lg font-medium group"
+          >
+            <Link href="/events">
+              View Events
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
           <Button
             variant="outline"
             size="lg"
             className="px-8 py-6 text-lg bg-transparent"
+            asChild
           >
             <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
               RSVP Now
