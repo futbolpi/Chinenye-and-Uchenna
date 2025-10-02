@@ -74,7 +74,7 @@ export default function EventCardClient({ event }: { event: EventItem }) {
               href={`/events/${event.id}`}
               aria-label={`View ${event.title}`}
             >
-              <Button variant="secondary" size="sm">
+              <Button variant="secondary" size="sm" className="cursor-pointer">
                 View details
               </Button>
             </Link>

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function EventsPage() {
   return (
-    <div className="bg-background text-foreground p-4">
+    <div className="bg-background text-foreground p-4 mt-8">
       {/* Hero Video */}
       <section className="relative">
         <div className="container mx-auto py-8">

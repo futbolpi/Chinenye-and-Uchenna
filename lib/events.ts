@@ -20,15 +20,15 @@ export const events: EventItem[] = [
     venue: "Bride's Family Compound, Lagos",
     summary:
       "A colorful celebration honoring family traditions with prayers, music, and dance. Traditional attire recommended.",
-    cover: "/images/hero.png",
+    cover: "/images/events/trad/1.png",
     images: [
       {
-        src: "/images/events/traditional-1.jpg",
+        src: "/images/events/trad/1.png",
         alt: "Traditional rites",
         caption: "Blessings & libation",
       },
       {
-        src: "/images/events/traditional-2.jpg",
+        src: "/images/events/trad/1.png",
         alt: "Family photo",
         caption: "Family circle",
       },
@@ -43,15 +43,15 @@ export const events: EventItem[] = [
     venue: "St. Mary’s Cathedral, Lekki",
     summary:
       "A solemn service of vows and prayers, followed by a short reception at the church hall. Formal attire (white recommended).",
-    cover: "/images/hero.png",
+    cover: "/images/events/court/1.jpg",
     images: [
       {
-        src: "/images/events/church-1.jpg",
+        src: "/images/events/court/1.jpg",
         alt: "Church ceremony",
         caption: "Vows & rings",
       },
       {
-        src: "/images/events/church-2.jpg",
+        src: "/images/events/white/1.png",
         alt: "Couple exit",
         caption: "Recessional",
       },
@@ -66,15 +66,15 @@ export const events: EventItem[] = [
     venue: "The Grand Banquet Hall, Victoria Island",
     summary:
       "An evening of dining, toasts, and music — join us for a joyful celebration of the new couple. Cocktail attire.",
-    cover: "/images/hero.png",
+    cover: "/images/events/reception/1.png",
     images: [
       {
-        src: "/images/events/reception-1.jpg",
+        src: "/images/events/reception/1.png",
         alt: "Reception table",
         caption: "Table setting",
       },
       {
-        src: "/images/events/reception-2.jpg",
+        src: "/images/events/reception/1.png",
         alt: "Dance floor",
         caption: "First dance",
       },
