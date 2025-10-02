@@ -1,10 +1,10 @@
 "use server";
 
 import { clerkClient, currentUser } from "@clerk/nextjs/server";
-
-import { getUserRole } from "@/lib/utils";
-import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+
+import prisma from "@/lib/prisma";
+import { getUserRole } from "@/lib/utils";
 
 export const completeOnboarding = async () => {
   const user = await currentUser();
@@ -18,7 +18,7 @@ export const completeOnboarding = async () => {
   const client = await clerkClient();
 
   try {
-    const res = await client.users.updateUser(user.id, {
+    await client.users.updateUser(user.id, {
       publicMetadata: {
         onboardingComplete: true,
         role,
@@ -41,6 +41,7 @@ export const completeOnboarding = async () => {
       message: role === "GUEST" ? "/" : "/dashboard",
     };
   } catch (err) {
+    console.error("Complete onboarding error: ", err);
     return { error: "There was an error updating the user metadata." };
   }
 };

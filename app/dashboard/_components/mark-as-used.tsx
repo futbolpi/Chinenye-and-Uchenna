@@ -4,7 +4,7 @@ import { CheckCircle, Loader2 } from "lucide-react";
 import { useTransition } from "react";
 import { toast } from "sonner";
 
-import { markInviteAsUsed } from "@/actions/mark-invite";
+import { markInviteAsUsed } from "@/actions/invites/mark-invite";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 const MarkAsUsed = ({ inviteId }: { inviteId: string }) => {
@@ -17,7 +17,7 @@ const MarkAsUsed = ({ inviteId }: { inviteId: string }) => {
 
         if (response.success) {
           toast.success(
-            response?.data?.message || "Invite marked as used successfully"
+            response?.data?.message || "Invite marked as used successfully",
           );
         } else {
           toast.error(response.error || "Failed to mark invite as used");

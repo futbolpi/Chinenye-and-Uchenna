@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { Check, ChevronsUpDown, GalleryVerticalEnd } from "lucide-react";
+import { useState } from "react";
 
 import {
   DropdownMenu,
@@ -22,7 +22,7 @@ export function VersionSwitcher({
   versions: string[];
   defaultVersion: string;
 }) {
-  const [selectedVersion, setSelectedVersion] = React.useState(defaultVersion);
+  const [selectedVersion, setSelectedVersion] = useState(defaultVersion);
 
   return (
     <SidebarMenu>

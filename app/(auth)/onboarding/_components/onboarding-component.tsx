@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 import { motion } from "framer-motion";
-import { Sparkles, Heart, CheckCircle, Loader2 } from "lucide-react";
+import { CheckCircle, Heart, Loader2, Sparkles } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 import { completeOnboarding } from "@/actions/complete-onboarding";
 
@@ -49,6 +49,7 @@ export default function OnboardingComponent() {
         setState("error");
         setMessage("Something went wrong. Please try again.");
         toast.error("Failed to complete onboarding");
+        console.log(error);
       }
     };
 

@@ -23,7 +23,7 @@ const Hero = () => {
 
   const whatsappHref = `https://wa.me/${siteConfig.rsvp.whatsapp.replace(
     /[^0-9+]/g,
-    ""
+    "",
   )}`;
 
   return (

@@ -5,11 +5,8 @@ import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-import { createInvite } from "@/actions/create-invite";
-import {
-  createInviteSchema,
-  CreateInviteSchema,
-} from "@/lib/validations/invites";
+import { createInvite } from "@/actions/invites/create-invite";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -21,7 +18,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Button } from "@/components/ui/button";
+import {
+  type CreateInviteSchema,
+  createInviteSchema,
+} from "@/lib/validations/invites";
 
 interface InviteFormProps {
   postAction: () => void;
@@ -44,7 +44,7 @@ const InviteForm = ({ postAction }: InviteFormProps) => {
 
         if (response.success) {
           toast.success(
-            response?.data?.message || "Invite was created successfully"
+            response?.data?.message || "Invite was created successfully",
           );
           postAction();
         } else {

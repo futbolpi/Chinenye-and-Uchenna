@@ -1,20 +1,22 @@
 "use server";
 
 import { auth } from "@clerk/nextjs/server";
-import { z } from "zod";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
-import { ActionResult } from "@/types";
-import {
-  markInviteUsedSchema,
-  MarkInviteUsedSchema,
-} from "@/lib/validations/invites";
-import prisma from "@/lib/prisma";
 import { staffRoles } from "@/config/constants";
+import prisma from "@/lib/prisma";
+import {
+  type MarkInviteUsedSchema,
+  markInviteUsedSchema,
+} from "@/lib/validations/invites";
+import type { ActionResult } from "@/types";
 
-export async function markInviteAsUsed(
-  rawData: MarkInviteUsedSchema
-): Promise<ActionResult> {
+export async function markInviteAsUsed(rawData: MarkInviteUsedSchema): Promise<
+  ActionResult<{
+    message: string;
+  }>
+> {
   try {
     const { sessionClaims } = await auth();
 

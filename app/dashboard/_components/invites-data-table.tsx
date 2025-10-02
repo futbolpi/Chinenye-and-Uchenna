@@ -1,7 +1,7 @@
 "use client";
 
 import { DataTable } from "@/components/ui/data-table";
-import { Invite } from "@/lib/generated/prisma/client";
+import type { Invite } from "@/lib/generated/prisma/client";
 import { useInviteColumns } from "./use-invite-columns";
 
 interface InvitesDataTableProps {

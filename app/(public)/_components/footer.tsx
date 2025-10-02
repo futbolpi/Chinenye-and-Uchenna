@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 const Footer = () => {
   const whatsappHref = `https://wa.me/${siteConfig.dev.whatsapp.replace(
     /[^0-9+]/g,
-    ""
+    "",
   )}`;
 
   return (

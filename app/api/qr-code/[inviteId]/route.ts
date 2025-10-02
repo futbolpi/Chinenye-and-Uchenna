@@ -5,8 +5,8 @@ import { env } from "@/env";
 import prisma from "@/lib/prisma";
 
 export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ inviteId: string }> }
+  _request: NextRequest,
+  { params }: { params: Promise<{ inviteId: string }> },
 ) {
   try {
     const { inviteId } = await params;
@@ -47,7 +47,7 @@ export async function GET(
     console.error("Error generating QR code:", error);
     return NextResponse.json(
       { error: "Failed to generate QR code" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

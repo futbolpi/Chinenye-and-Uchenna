@@ -1,12 +1,12 @@
-import { notFound } from "next/navigation";
-import { type SearchParams } from "nuqs/server";
 import { auth } from "@clerk/nextjs/server";
+import { notFound } from "next/navigation";
+import type { SearchParams } from "nuqs/server";
 
 import { staffRoles } from "@/config/constants";
+import { FloatingDecorations } from "./_components/floating-decorations";
 import { InviteDisplay } from "./_components/invite-display";
 import { PhoneVerificationForm } from "./_components/phone-verification-form";
 import { WeddingDetails } from "./_components/wedding-details";
-import { FloatingDecorations } from "./_components/floating-decorations";
 import { searchParamsCache } from "./searchparams";
 import { getInvite } from "./services";
 

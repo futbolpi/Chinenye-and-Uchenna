@@ -1,14 +1,16 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "framer-motion";
+import { CheckCircle, Loader2, Phone } from "lucide-react";
+import { useQueryStates } from "nuqs";
 import { useTransition } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { motion } from "framer-motion";
 import { toast } from "sonner";
-import { Phone, CheckCircle, Loader2 } from "lucide-react";
-import { useQueryStates } from "nuqs";
+import { z } from "zod";
 
+import { verifyInvitePhone } from "@/actions/invites/verify-invite-phone";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -16,8 +18,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -26,7 +26,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { verifyInvitePhone } from "@/actions/verify-invite-phone";
+import { Input } from "@/components/ui/input";
 import { inviteParamsParsers, inviteParamsUrlKeys } from "../searchparams";
 
 const phoneSchema = z.object({

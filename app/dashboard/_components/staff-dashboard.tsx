@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { Plus } from "lucide-react";
+import { useState } from "react";
 
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,11 +11,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Invite } from "@/lib/generated/prisma/client";
+import type { Invite } from "@/lib/generated/prisma/client";
 import { CreateInviteDialog } from "./create-invite-dialog";
-import { QRCodeDialog } from "./qr-code-dialog";
 import { InvitesDataTable } from "./invites-data-table";
+import { QRCodeDialog } from "./qr-code-dialog";
 import StatsCard from "./stats-card";
 import { UpdateInviteDialog } from "./update-invite-dialog";
 
@@ -46,10 +46,10 @@ export function StaffDashboard({
 
   const totalInvites = invites.length;
   const usedInvites = invites.filter(
-    (invite) => invite.redeemedCount < 1
+    (invite) => invite.redeemedCount < 1,
   ).length;
   const singleUseInvites = invites.filter(
-    (invite) => invite.type === "SINGLE_USE"
+    (invite) => invite.type === "SINGLE_USE",
   ).length;
 
   return (

@@ -1,8 +1,10 @@
 "use client";
 
-import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+import Link from "next/link";
+
+import { siteConfig } from "@/config/site";
 
 const Navbar = () => {
   return (
@@ -18,10 +20,12 @@ const Navbar = () => {
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
           >
-            <Heart className="h-6 w-6 text-primary" />
-            <span className="font-serif text-xl font-semibold text-foreground">
-              {siteConfig.name}
-            </span>
+            <Link href="/" className="flex items-center space-x-2">
+              <Heart className="h-6 w-6 text-primary" />
+              <span className="font-serif text-xl font-semibold text-foreground">
+                {siteConfig.name}
+              </span>
+            </Link>
           </motion.div>
           <div className="hidden md:flex items-center space-x-8">
             <a

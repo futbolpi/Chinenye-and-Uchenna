@@ -1,8 +1,12 @@
+// biome-ignore-all lint/performance/noImgElement: Just get the qr code, no need for optimizations.
+
 "use client";
 
-import { useState, useEffect } from "react";
-import { Download, Copy, Check, QrCode } from "lucide-react";
+import { Check, Copy, Download, QrCode } from "lucide-react";
+import { useEffect, useState } from "react";
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -10,9 +14,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Invite } from "@/lib/generated/prisma/client";
+import type { Invite } from "@/lib/generated/prisma/client";
+
 // import QrCodeDetails from "./qr-code-details";
 
 interface QRCodeDialogProps {
@@ -31,28 +34,28 @@ export function QRCodeDialog({
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    const generateQRCode = async () => {
+      if (!invite) return;
+
+      setIsLoading(true);
+      try {
+        const response = await fetch(`/api/qr-code/${invite.id}`);
+        if (response.ok) {
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          setQrCodeUrl(url);
+        }
+      } catch (error) {
+        console.error("Failed to generate QR code:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     if (open && invite) {
       generateQRCode();
     }
   }, [open, invite]);
-
-  const generateQRCode = async () => {
-    if (!invite) return;
-
-    setIsLoading(true);
-    try {
-      const response = await fetch(`/api/qr-code/${invite.id}`);
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-        setQrCodeUrl(url);
-      }
-    } catch (error) {
-      console.error("Failed to generate QR code:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const handleDownload = () => {
     if (!qrCodeUrl || !invite) return;
@@ -116,7 +119,7 @@ export function QRCodeDialog({
                   </div>
                 ) : qrCodeUrl ? (
                   <img
-                    src={qrCodeUrl || "/placeholder.svg"}
+                    src={qrCodeUrl}
                     alt={`QR Code for ${invite.guestName}`}
                     className="w-64 h-64 rounded-lg"
                   />
@@ -133,9 +136,9 @@ export function QRCodeDialog({
 
           {/* Invite URL */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-foreground">
+            <span className="text-sm font-medium text-foreground">
               Invitation Link
-            </label>
+            </span>
             <div className="flex gap-2">
               <div className="flex-1 p-2 bg-muted/20 rounded-md border border-border/50">
                 <p className="text-sm text-muted-foreground font-mono break-all">

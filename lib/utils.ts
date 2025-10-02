@@ -1,8 +1,8 @@
-import { clsx, type ClassValue } from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 import { admins, couples, staff } from "@/config/constants";
-import { UserRole } from "./generated/prisma/enums";
+import type { UserRole } from "./generated/prisma/enums";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

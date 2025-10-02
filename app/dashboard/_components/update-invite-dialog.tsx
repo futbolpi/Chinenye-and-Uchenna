@@ -1,7 +1,5 @@
 "use client";
 
-import type React from "react";
-
 import {
   Dialog,
   DialogContent,
@@ -9,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Invite } from "@/lib/generated/prisma/client";
+import type { Invite } from "@/lib/generated/prisma/client";
 import InviteUpdateForm from "./invite-update-form";
 
 interface UpdateInviteDialogProps {

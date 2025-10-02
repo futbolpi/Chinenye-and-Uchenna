@@ -1,9 +1,10 @@
 "use client";
 
 import type { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal, QrCode, ArrowUpDown, Pen } from "lucide-react";
+import { ArrowUpDown, MoreHorizontal, Pen, QrCode } from "lucide-react";
 import { useMemo } from "react";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,8 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
-import { Invite } from "@/lib/generated/prisma/client";
+import type { Invite } from "@/lib/generated/prisma/client";
 import MarkAsUsed from "./mark-as-used";
 
 type InviteColumnsProps = {
@@ -189,7 +189,7 @@ export const useInviteColumns = ({
 }: InviteColumnsProps) => {
   const columns = useMemo(
     () => getColumns({ onGenerateQR, handleUpdateInvite }),
-    [getColumns, onGenerateQR]
+    [onGenerateQR, handleUpdateInvite],
   );
   return columns;
 };

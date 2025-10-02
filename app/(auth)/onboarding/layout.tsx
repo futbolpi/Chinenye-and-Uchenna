@@ -10,7 +10,7 @@ export default async function RootLayout({
 }) {
   const { sessionClaims } = await auth();
 
-  if (!!sessionClaims?.role) {
+  if (sessionClaims?.role) {
     if (adminOrCouple.includes(sessionClaims.role)) {
       redirect("/dashboard");
     }

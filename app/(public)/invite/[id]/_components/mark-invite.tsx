@@ -1,11 +1,11 @@
 "use client";
 
 import { CheckCircle, Loader2 } from "lucide-react";
-import React, { useTransition } from "react";
+import { useTransition } from "react";
 import { toast } from "sonner";
 
+import { markInviteAsUsed } from "@/actions/invites/mark-invite";
 import { Button } from "@/components/ui/button";
-import { markInviteAsUsed } from "@/actions/mark-invite";
 
 type MarkInviteProps = { inviteId: string };
 

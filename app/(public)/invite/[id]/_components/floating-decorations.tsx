@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Heart } from "lucide-react";
+import { Heart, Sparkles } from "lucide-react";
 
 export function FloatingDecorations() {
   return (

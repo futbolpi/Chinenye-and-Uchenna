@@ -1,20 +1,22 @@
 "use server";
 
 import { auth } from "@clerk/nextjs/server";
-import { z } from "zod";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 
-import { ActionResult } from "@/types";
+import { adminOrCouple } from "@/config/constants";
+import prisma from "@/lib/prisma";
 import {
-  UpdateInviteSchema,
+  type UpdateInviteSchema,
   updateInviteSchema,
 } from "@/lib/validations/invites";
-import prisma from "@/lib/prisma";
-import { adminOrCouple } from "@/config/constants";
+import type { ActionResult } from "@/types";
 
-export async function updateInvite(
-  rawData: UpdateInviteSchema
-): Promise<ActionResult> {
+export async function updateInvite(rawData: UpdateInviteSchema): Promise<
+  ActionResult<{
+    message: string;
+  }>
+> {
   try {
     const { sessionClaims } = await auth();
 

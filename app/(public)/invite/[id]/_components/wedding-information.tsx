@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
-import { Calendar, Clock, MapPin, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { Calendar, Clock, MapPin, Sparkles } from "lucide-react";
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const WeddingInformation = () => {
   return (
@@ -150,7 +149,7 @@ const WeddingInformation = () => {
               onClick={() =>
                 window.open(
                   "https://maps.google.com/?q=123+Wedding+Lane,+Celebration+City,+CA+90210",
-                  "_blank"
+                  "_blank",
                 )
               }
             >

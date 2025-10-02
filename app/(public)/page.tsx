@@ -1,7 +1,7 @@
-import Rsvp from "./_components/rsvp";
-import OurStory from "./_components/our-story";
-import WeddingDetails from "./_components/wedding-details";
 import Hero from "./_components/hero";
+import OurStory from "./_components/our-story";
+import Rsvp from "./_components/rsvp";
+import WeddingDetails from "./_components/wedding-details";
 
 export default function WeddingHomePage() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { motion } from "framer-motion";
 import {
   Calendar,
   Camera,
@@ -11,12 +11,11 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import { motion } from "framer-motion";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import type { Invite, UserRole } from "@/lib/generated/prisma/client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { staffRoles } from "@/config/constants";
+import type { Invite, UserRole } from "@/lib/generated/prisma/client";
 import MarkInvite from "./mark-invite";
 
 type AdditionalInformationProps = { invite: Invite; userRole?: UserRole };

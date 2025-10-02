@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 import type { Invite } from "@/lib/generated/prisma/client";
 import type { UserRole } from "@/lib/generated/prisma/enums";
-import WelcomeCard from "./welcome-card";
-import WeddingInformation from "./wedding-information";
 import AdditionalInformation from "./additional-information";
+import WeddingInformation from "./wedding-information";
+import WelcomeCard from "./welcome-card";
 
 interface WeddingDetailsProps {
   invite: Invite;

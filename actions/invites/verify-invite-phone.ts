@@ -1,18 +1,18 @@
 "use server";
 
-import { z } from "zod";
 import { headers } from "next/headers";
+import { z } from "zod";
 
+import type { Invite } from "@/lib/generated/prisma/client";
 import prisma from "@/lib/prisma";
 import {
+  type PhoneVerificationSchema,
   phoneVerificationSchema,
-  PhoneVerificationSchema,
 } from "@/lib/validations/invites";
-import { Invite } from "@/lib/generated/prisma/client";
-import { ActionResult } from "@/types";
+import type { ActionResult } from "@/types";
 
 export async function verifyInvitePhone(
-  rawData: PhoneVerificationSchema
+  rawData: PhoneVerificationSchema,
 ): Promise<ActionResult<{ invite: Invite; message: string }>> {
   try {
     const validatedData = phoneVerificationSchema.parse(rawData);

@@ -5,10 +5,8 @@ import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-import {
-  updateInviteSchema,
-  UpdateInviteSchema,
-} from "@/lib/validations/invites";
+import { updateInvite } from "@/actions/invites/update-invite";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -20,8 +18,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Button } from "@/components/ui/button";
-import { updateInvite } from "@/actions/invites/update-invite";
+import {
+  type UpdateInviteSchema,
+  updateInviteSchema,
+} from "@/lib/validations/invites";
 
 interface InviteUpdateFormProps {
   postAction: () => void;
@@ -53,7 +53,7 @@ const InviteUpdateForm = ({
 
         if (response.success) {
           toast.success(
-            response?.data?.message || "Invite was updated successfully"
+            response?.data?.message || "Invite was updated successfully",
           );
           postAction();
         } else {
