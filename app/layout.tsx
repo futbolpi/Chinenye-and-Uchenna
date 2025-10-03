@@ -7,6 +7,7 @@ import { type ReactNode, Suspense } from "react";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { siteConfig } from "@/config/site";
 
 import "./globals.css";
 
@@ -27,9 +28,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wedding QR Invitations",
-  description: "Elegant QR code invitation system for your special day",
-  generator: "v0.app",
+  title: `${siteConfig.name} Wedding QR Invitations`,
+  description: `Elegant QR code invitation system for ${siteConfig.name} special day`,
+  generator: "Next.js",
 };
 
 export default function RootLayout({

@@ -85,7 +85,9 @@ const Hero = () => {
 
         <motion.div variants={fadeInUp} className="text-center">
           <p className="text-sm text-muted-foreground mb-2">Save the Date</p>
-          <p className="font-serif text-2xl text-foreground">June 15th, 2024</p>
+          <p className="font-serif text-2xl text-foreground">
+            November 22nd, 2025
+          </p>
         </motion.div>
       </motion.div>
 

@@ -1,19 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import WeddingInfoCard from "./wedding-info-card";
 
-const WeddingInformation = () => {
+type InfoItem = {
+  id: string;
+  title: string;
+  subtitle?: string;
+  date?: string;
+  time?: string;
+  venue?: string;
+  address?: string;
+  mapQuery?: string; // used to build maps link
+  delay?: number;
+};
+
+const INFO: InfoItem[] = [
+  {
+    id: "church-wedding",
+    title: "Church Wedding",
+    date: "Nov 22nd, 2025",
+    time: "10:00 AM",
+    venue: "Church of the Assumption Parish",
+    address: "2 Kwame Nkrumah Crescent, Asokoro, Abuja",
+
+    delay: 0.3,
+  },
+  {
+    id: "reception",
+    title: "Reception",
+    date: "Nov 22nd, 2025",
+    time: "1:00 PM",
+    venue: "Signature Hall by Wells Carlton",
+    address:
+      "The Wells Carlton Hotels & Apartments. 8 Gado Nasko Close Off Jose Marti Street Asokoro Abuja.",
+
+    delay: 0.45,
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.06,
+      delayChildren: i * 0.05,
+    },
+  }),
+};
+
+const WeddingInformation: React.FC = () => {
   return (
     <Card
       style={{
         borderColor: "var(--color-border)",
         backgroundColor: "var(--color-card)",
         backdropFilter: "blur(8px)",
-        boxShadow: "0 25px 50px rgba(0,0,0,0.1)",
+        boxShadow: "0 20px 40px rgba(0,0,0,0.08)",
       }}
     >
       <CardHeader>
@@ -28,135 +76,18 @@ const WeddingInformation = () => {
           Wedding Details
         </CardTitle>
       </CardHeader>
+
       <CardContent className="space-y-6">
-        {/* Date */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex items-start gap-4 p-4 rounded-lg"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-muted) 0%, var(--color-secondary) 100%)",
-          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+          className="flex flex-col gap-4"
         >
-          <div
-            style={{
-              padding: "0.5rem",
-              backgroundColor: "var(--color-background)",
-              borderRadius: "0.5rem",
-            }}
-          >
-            <Calendar
-              className="h-5 w-5"
-              style={{ color: "var(--color-primary)" }}
-            />
-          </div>
-          <div>
-            <p
-              className="font-semibold text-lg"
-              style={{ color: "var(--color-foreground)" }}
-            >
-              Saturday, June 15th, 2024
-            </p>
-            <p style={{ color: "var(--color-muted-foreground)" }}>
-              Save the date!
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Time */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.4 }}
-          className="flex items-start gap-4 p-4 rounded-lg"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-secondary) 0%, var(--color-muted) 100%)",
-          }}
-        >
-          <div
-            style={{
-              padding: "0.5rem",
-              backgroundColor: "var(--color-background)",
-              borderRadius: "0.5rem",
-            }}
-          >
-            <Clock
-              className="h-5 w-5"
-              style={{ color: "var(--color-accent)" }}
-            />
-          </div>
-          <div>
-            <p
-              className="font-semibold text-lg"
-              style={{ color: "var(--color-foreground)" }}
-            >
-              4:00 PM - 11:00 PM
-            </p>
-            <p style={{ color: "var(--color-muted-foreground)" }}>
-              Ceremony begins at 4:30 PM
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Location */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5 }}
-          className="flex items-start gap-4 p-4 rounded-lg"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-muted) 0%, var(--color-secondary) 100%)",
-          }}
-        >
-          <div
-            style={{
-              padding: "0.5rem",
-              backgroundColor: "var(--color-background)",
-              borderRadius: "0.5rem",
-            }}
-          >
-            <MapPin
-              className="h-5 w-5"
-              style={{ color: "var(--color-primary)" }}
-            />
-          </div>
-          <div className="flex-1">
-            <p
-              className="font-semibold text-lg"
-              style={{ color: "var(--color-foreground)" }}
-            >
-              The Grand Ballroom
-            </p>
-            <p
-              style={{ color: "var(--color-muted-foreground)" }}
-              className="mb-3"
-            >
-              123 Wedding Lane, Celebration City, CA 90210
-            </p>
-            <Button
-              variant="outline"
-              size="sm"
-              style={{
-                borderColor: "var(--color-border)",
-                color: "var(--color-primary)",
-                backgroundColor: "var(--color-background)",
-              }}
-              className="hover:bg-muted bg-transparent"
-              onClick={() =>
-                window.open(
-                  "https://maps.google.com/?q=123+Wedding+Lane,+Celebration+City,+CA+90210",
-                  "_blank",
-                )
-              }
-            >
-              <MapPin className="mr-2 h-4 w-4" />
-              Get Directions
-            </Button>
-          </div>
+          {INFO.map((info) => (
+            <WeddingInfoCard item={info} key={info.id} />
+          ))}
         </motion.div>
       </CardContent>
     </Card>

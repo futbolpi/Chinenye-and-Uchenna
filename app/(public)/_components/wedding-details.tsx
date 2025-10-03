@@ -53,9 +53,9 @@ const WeddingDetails = () => {
               When
             </h3>
             <p className="text-muted-foreground mb-2">
-              Saturday, June 15th, 2024
+              Saturday, November 22nd, 2025
             </p>
-            <p className="text-muted-foreground">4:00 PM - 11:00 PM</p>
+            <p className="text-muted-foreground">11:00 AM - 5:00 PM</p>
           </Card>
         </motion.div>
 

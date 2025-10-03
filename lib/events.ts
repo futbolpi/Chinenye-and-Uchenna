@@ -12,35 +12,35 @@ export type EventItem = {
 };
 
 export const events: EventItem[] = [
-  {
-    id: "traditional-ceremony",
-    title: "Traditional Wedding",
-    date: "2026-03-06",
-    time: "11:00 AM",
-    venue: "Bride's Family Compound, Lagos",
-    summary:
-      "A colorful celebration honoring family traditions with prayers, music, and dance. Traditional attire recommended.",
-    cover: "/images/events/trad/1.png",
-    images: [
-      {
-        src: "/images/events/trad/1.png",
-        alt: "Traditional rites",
-        caption: "Blessings & libation",
-      },
-      {
-        src: "/images/events/trad/1.png",
-        alt: "Family photo",
-        caption: "Family circle",
-      },
-    ],
-    tags: ["Traditional", "Ceremony"],
-  },
+  // {
+  //   id: "traditional-ceremony",
+  //   title: "Traditional Wedding",
+  //   date: "2026-03-06",
+  //   time: "11:00 AM",
+  //   venue: "Bride's Family Compound, Lagos",
+  //   summary:
+  //     "A colorful celebration honoring family traditions with prayers, music, and dance. Traditional attire recommended.",
+  //   cover: "/images/events/trad/1.png",
+  //   images: [
+  //     {
+  //       src: "/images/events/trad/1.png",
+  //       alt: "Traditional rites",
+  //       caption: "Blessings & libation",
+  //     },
+  //     {
+  //       src: "/images/events/trad/1.png",
+  //       alt: "Family photo",
+  //       caption: "Family circle",
+  //     },
+  //   ],
+  //   tags: ["Traditional", "Ceremony"],
+  // },
   {
     id: "church-wedding",
-    title: "Church Service (White Wedding)",
-    date: "2026-03-07",
-    time: "9:00 AM",
-    venue: "St. Mary’s Cathedral, Lekki",
+    title: "Church Service",
+    date: "2025-11-22",
+    time: "10:00 AM",
+    venue: "Church of the Assumption Parish",
     summary:
       "A solemn service of vows and prayers, followed by a short reception at the church hall. Formal attire (white recommended).",
     cover: "/images/events/court/1.jpg",
@@ -61,9 +61,9 @@ export const events: EventItem[] = [
   {
     id: "reception",
     title: "Reception & Party",
-    date: "2026-03-07",
-    time: "6:00 PM",
-    venue: "The Grand Banquet Hall, Victoria Island",
+    date: "2025-11-22",
+    time: "1:00 PM",
+    venue: "Signature Hall by Wells Carlton",
     summary:
       "An evening of dining, toasts, and music — join us for a joyful celebration of the new couple. Cocktail attire.",
     cover: "/images/events/reception/1.png",

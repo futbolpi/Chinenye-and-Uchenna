@@ -54,7 +54,7 @@ export default async function InvitePage({
     >
       <FloatingDecorations />
 
-      <div className="container mx-auto p-6 max-w-md space-y-8 relative z-10">
+      <div className="container mx-auto p-6 max-w-lg space-y-8 relative z-10">
         <InviteDisplay isAlreadyUsed={isAlreadyUsed} />
 
         {showVerificationForm && !isAlreadyUsed && (
