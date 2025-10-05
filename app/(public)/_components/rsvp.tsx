@@ -2,14 +2,10 @@
 
 import { motion } from "framer-motion";
 
+import RsvpModal from "@/components/rsvp-modal";
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
 
 const Rsvp = () => {
-  const whatsappHref = `https://wa.me/${siteConfig.rsvp.whatsapp.replace(
-    /[^0-9+]/g,
-    "",
-  )}`;
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -24,11 +20,13 @@ const Rsvp = () => {
         We can't wait to celebrate with you! Please let us know if you'll be
         joining us.
       </p>
-      <Button size="lg" className="px-12 py-6 text-lg font-medium" asChild>
-        <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
-          RSVP Now
-        </a>
-      </Button>
+      <RsvpModal
+        trigger={
+          <Button size="lg" className="px-12 py-6 text-lg font-medium">
+            RSVP Now
+          </Button>
+        }
+      />
     </motion.div>
   );
 };

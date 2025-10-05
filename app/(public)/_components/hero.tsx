@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Heart } from "lucide-react";
 import Link from "next/link";
 
+import RsvpModal from "@/components/rsvp-modal";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 
@@ -21,11 +22,6 @@ const Hero = () => {
       },
     },
   };
-
-  const whatsappHref = `https://wa.me/${siteConfig.rsvp.whatsapp.replace(
-    /[^0-9+]/g,
-    "",
-  )}`;
 
   return (
     <>
@@ -71,16 +67,17 @@ const Hero = () => {
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="px-8 py-6 text-lg bg-transparent"
-            asChild
-          >
-            <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
-              RSVP Now
-            </a>
-          </Button>
+          <RsvpModal
+            trigger={
+              <Button
+                variant="outline"
+                size="lg"
+                className="px-8 py-6 text-lg bg-transparent"
+              >
+                RSVP Now
+              </Button>
+            }
+          />
         </motion.div>
 
         <motion.div variants={fadeInUp} className="text-center">

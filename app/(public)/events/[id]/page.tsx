@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { env } from "@/env";
 import { events } from "@/lib/events";
 import EventGalleryClient from "./components/event-gallery-client";
 
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: `${event.title} — Events`,
     description: event.summary ?? `Details for ${event.title}`,
+    metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
     openGraph: {
       title: `${event.title} — Events`,
       description: event.summary,

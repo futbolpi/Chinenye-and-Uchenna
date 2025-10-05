@@ -12,10 +12,11 @@ import {
   Users,
 } from "lucide-react";
 
+import RsvpModal from "@/components/rsvp-modal";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { staffRoles } from "@/config/constants";
-import { siteConfig } from "@/config/site";
 import type { Invite, UserRole } from "@/lib/generated/prisma/client";
 import MarkInvite from "./mark-invite";
 
@@ -26,11 +27,6 @@ const AdditionalInformation = ({
   userRole,
 }: AdditionalInformationProps) => {
   const hasMarkRole = !!userRole && staffRoles.includes(userRole);
-
-  const whatsappHref = `https://wa.me/${siteConfig.rsvp.whatsapp.replace(
-    /[^0-9+]/g,
-    "",
-  )}`;
 
   return (
     <Card
@@ -111,14 +107,17 @@ const AdditionalInformation = ({
                 style={{ color: "var(--color-muted-foreground)" }}
                 className="ml-2"
               >
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline text-primary"
-                >
-                  Please confirm by Nov 8th, 2025
-                </a>
+                <RsvpModal
+                  trigger={
+                    <Button
+                      className="underline text-primary -mx-4"
+                      variant={"ghost"}
+                    >
+                      Please confirm
+                    </Button>
+                  }
+                />{" "}
+                by Nov 8th, 2025
               </span>
             </div>
           </motion.div>
@@ -135,7 +134,7 @@ const AdditionalInformation = ({
           >
             <Phone
               className="h-4 w-4"
-              style={{ color: "var(--color-primary)" }}
+              style={{ color: "var(--color-accent)" }}
             />
             <div>
               <span
@@ -148,15 +147,17 @@ const AdditionalInformation = ({
                 style={{ color: "var(--color-muted-foreground)" }}
                 className="ml-2"
               >
-                For questions,{" "}
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline text-primary"
-                >
-                  Contact Now
-                </a>
+                For questions,
+                <RsvpModal
+                  trigger={
+                    <Button
+                      className="underline text-primary -mx-2"
+                      variant={"ghost"}
+                    >
+                      Contact Now
+                    </Button>
+                  }
+                />
               </span>
             </div>
           </motion.div>

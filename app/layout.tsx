@@ -55,7 +55,11 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <NuqsAdapter>
-              <Suspense>{children}</Suspense>
+              <Suspense>
+                {/* <div vaul-drawer-wrapper="" className="bg-background"> */}
+                {children}
+                {/* </div> */}
+              </Suspense>
             </NuqsAdapter>
             <Toaster position="top-center" richColors />
           </ThemeProvider>
