@@ -51,6 +51,7 @@ export default async function InvitePage({
         background:
           "linear-gradient(135deg, var(--color-background) 0%, var(--color-muted) 50%, var(--color-secondary) 100%)",
       }}
+      className="mt-12"
     >
       <FloatingDecorations />
 
