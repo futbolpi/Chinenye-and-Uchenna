@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { Calendar, Check, Clock, Copy, MapPin } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -39,15 +40,21 @@ const buildMapsUrl = (item: InfoItem) => {
 export default function WeddingInfoCard({ item }: Props) {
   const { title, subtitle, date, time, venue, address, delay = 0 } = item;
   const mapsUrl = buildMapsUrl(item);
+  const [copyingAddress, setCopyingAddress] = useState(false);
 
   const handleCopyAddress = async () => {
     if (!address) return;
+    setCopyingAddress(true);
     try {
       await navigator.clipboard.writeText(address);
       toast.success("Address copied to clipboard");
     } catch (e) {
       console.error(e);
       toast.error("Could not copy address");
+    } finally {
+      setTimeout(() => {
+        setCopyingAddress(false);
+      }, 3000);
     }
   };
 
@@ -157,9 +164,14 @@ export default function WeddingInfoCard({ item }: Props) {
                       variant="outline"
                       size="sm"
                       onClick={handleCopyAddress}
+                      disabled={copyingAddress}
                       className="px-3"
                     >
-                      Copy
+                      {copyingAddress ? (
+                        <Check className="w-4 h-4" />
+                      ) : (
+                        <Copy className="w-4 h-4" />
+                      )}
                     </Button>
                   )}
                 </div>

@@ -81,7 +81,7 @@ const AdditionalInformation = ({
                 style={{ color: "var(--color-muted-foreground)" }}
                 className="ml-2"
               >
-                Cocktail attire
+                Purple, Gold & White
               </span>
             </div>
           </motion.div>

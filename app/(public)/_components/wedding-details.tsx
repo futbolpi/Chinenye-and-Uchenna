@@ -82,8 +82,8 @@ const WeddingDetails = () => {
             <h3 className="font-serif text-2xl font-semibold text-foreground mb-3">
               Dress Code
             </h3>
-            <p className="text-muted-foreground mb-2">Cocktail Attire</p>
-            <p className="text-muted-foreground">Garden party elegant</p>
+            <p className="text-muted-foreground mb-2">Color code</p>
+            <p className="text-muted-foreground">Purple, Gold & White</p>
           </Card>
         </motion.div>
       </motion.div>

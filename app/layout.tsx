@@ -57,17 +57,7 @@ export default function RootLayout({
             <NuqsAdapter>
               <Suspense>{children}</Suspense>
             </NuqsAdapter>
-            <Toaster
-              position="top-center"
-              richColors
-              toastOptions={{
-                style: {
-                  background: "hsl(var(--background))",
-                  color: "hsl(var(--foreground))",
-                  border: "1px solid hsl(var(--border))",
-                },
-              }}
-            />
+            <Toaster position="top-center" richColors />
           </ThemeProvider>
         </body>
       </html>

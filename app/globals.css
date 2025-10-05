@@ -4,70 +4,71 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Wedding-themed color palette inspired by design */
-  --background: oklch(0.99 0.005 85); /* Soft ivory */
-  --foreground: oklch(0.25 0.02 85); /* Deep charcoal */
-  --card: oklch(0.98 0.008 85); /* Warm white */
-  --card-foreground: oklch(0.25 0.02 85);
-  --popover: oklch(0.98 0.008 85);
-  --popover-foreground: oklch(0.25 0.02 85);
-  --primary: oklch(0.65 0.15 25); /* Elegant blush */
-  --primary-foreground: oklch(0.98 0.008 85);
-  --secondary: oklch(0.92 0.02 85); /* Soft neutral */
-  --secondary-foreground: oklch(0.35 0.02 85);
-  --muted: oklch(0.94 0.015 85);
-  --muted-foreground: oklch(0.55 0.02 85);
-  --accent: oklch(0.75 0.12 45); /* Warm gold accent */
-  --accent-foreground: oklch(0.25 0.02 85);
+  /* Wedding-themed color palette - Purple, Gold & White */
+  --background: oklch(0.99 0.005 280); /* Pure white with subtle purple undertone */
+  --foreground: oklch(0.25 0.04 280); /* Deep purple-charcoal */
+  --card: oklch(0.98 0.008 280); /* Soft white */
+  --card-foreground: oklch(0.25 0.04 280);
+  --popover: oklch(0.98 0.008 280);
+  --popover-foreground: oklch(0.25 0.04 280);
+  --primary: oklch(0.55 0.18 290); /* Rich royal purple */
+  --primary-foreground: oklch(0.99 0.005 280);
+  --secondary: oklch(0.85 0.08 290); /* Soft lavender */
+  --secondary-foreground: oklch(0.3 0.04 280);
+  --muted: oklch(0.94 0.02 280);
+  --muted-foreground: oklch(0.5 0.04 280);
+  --accent: oklch(0.75 0.15 65); /* Luxurious champagne gold */
+  --accent-foreground: oklch(0.25 0.04 280);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0.008 85);
-  --border: oklch(0.88 0.02 85);
-  --input: oklch(0.88 0.02 85);
-  --ring: oklch(0.65 0.15 25);
-  --chart-1: oklch(0.65 0.15 25);
-  --chart-2: oklch(0.75 0.12 45);
-  --chart-3: oklch(0.55 0.08 85);
-  --chart-4: oklch(0.45 0.05 85);
-  --chart-5: oklch(0.35 0.02 85);
+  --destructive-foreground: oklch(0.99 0.005 280);
+  --border: oklch(0.88 0.03 280);
+  --input: oklch(0.88 0.03 280);
+  --ring: oklch(0.55 0.18 290);
+  --chart-1: oklch(0.55 0.18 290); /* Royal purple */
+  --chart-2: oklch(0.75 0.15 65); /* Champagne gold */
+  --chart-3: oklch(0.7 0.12 285); /* Medium purple */
+  --chart-4: oklch(0.85 0.08 290); /* Soft lavender */
+  --chart-5: oklch(0.8 0.1 70); /* Light gold */
   --radius: 0.75rem;
-  --sidebar: oklch(0.97 0.01 85);
-  --sidebar-foreground: oklch(0.25 0.02 85);
-  --sidebar-primary: oklch(0.65 0.15 25);
-  --sidebar-primary-foreground: oklch(0.98 0.008 85);
-  --sidebar-accent: oklch(0.92 0.02 85);
-  --sidebar-accent-foreground: oklch(0.35 0.02 85);
-  --sidebar-border: oklch(0.88 0.02 85);
-  --sidebar-ring: oklch(0.65 0.15 25);
+  --sidebar: oklch(0.97 0.01 280);
+  --sidebar-foreground: oklch(0.25 0.04 280);
+  --sidebar-primary: oklch(0.55 0.18 290);
+  --sidebar-primary-foreground: oklch(0.99 0.005 280);
+  --sidebar-accent: oklch(0.92 0.03 280);
+  --sidebar-accent-foreground: oklch(0.3 0.04 280);
+  --sidebar-border: oklch(0.88 0.03 280);
+  --sidebar-ring: oklch(0.55 0.18 290);
 }
 
 .dark {
-  --background: oklch(0.15 0.02 85);
-  --foreground: oklch(0.95 0.008 85);
-  --card: oklch(0.18 0.02 85);
-  --card-foreground: oklch(0.95 0.008 85);
-  --popover: oklch(0.18 0.02 85);
-  --popover-foreground: oklch(0.95 0.008 85);
-  --primary: oklch(0.75 0.15 25);
-  --primary-foreground: oklch(0.15 0.02 85);
-  --secondary: oklch(0.25 0.02 85);
-  --secondary-foreground: oklch(0.85 0.008 85);
-  --muted: oklch(0.22 0.02 85);
-  --muted-foreground: oklch(0.65 0.02 85);
-  --accent: oklch(0.85 0.12 45);
-  --accent-foreground: oklch(0.15 0.02 85);
+  /* Updated dark mode to complement purple, gold, and white theme */
+  --background: oklch(0.15 0.03 280);
+  --foreground: oklch(0.95 0.008 280);
+  --card: oklch(0.18 0.03 280);
+  --card-foreground: oklch(0.95 0.008 280);
+  --popover: oklch(0.18 0.03 280);
+  --popover-foreground: oklch(0.95 0.008 280);
+  --primary: oklch(0.7 0.18 290); /* Lighter purple for dark mode */
+  --primary-foreground: oklch(0.15 0.03 280);
+  --secondary: oklch(0.3 0.08 290); /* Darker lavender */
+  --secondary-foreground: oklch(0.85 0.008 280);
+  --muted: oklch(0.22 0.03 280);
+  --muted-foreground: oklch(0.65 0.04 280);
+  --accent: oklch(0.8 0.15 65); /* Brighter gold for dark mode */
+  --accent-foreground: oklch(0.15 0.03 280);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.95 0.008 85);
-  --border: oklch(0.25 0.02 85);
-  --input: oklch(0.25 0.02 85);
-  --ring: oklch(0.75 0.15 25);
-  --sidebar: oklch(0.18 0.02 85);
-  --sidebar-foreground: oklch(0.95 0.008 85);
-  --sidebar-primary: oklch(0.75 0.15 25);
-  --sidebar-primary-foreground: oklch(0.15 0.02 85);
-  --sidebar-accent: oklch(0.25 0.02 85);
-  --sidebar-accent-foreground: oklch(0.85 0.008 85);
-  --sidebar-border: oklch(0.25 0.02 85);
-  --sidebar-ring: oklch(0.75 0.15 25);
+  --destructive-foreground: oklch(0.95 0.008 280);
+  --border: oklch(0.25 0.03 280);
+  --input: oklch(0.25 0.03 280);
+  --ring: oklch(0.7 0.18 290);
+  --sidebar: oklch(0.18 0.03 280);
+  --sidebar-foreground: oklch(0.95 0.008 280);
+  --sidebar-primary: oklch(0.7 0.18 290);
+  --sidebar-primary-foreground: oklch(0.15 0.03 280);
+  --sidebar-accent: oklch(0.3 0.08 290);
+  --sidebar-accent-foreground: oklch(0.85 0.008 280);
+  --sidebar-border: oklch(0.25 0.03 280);
+  --sidebar-ring: oklch(0.7 0.18 290);
 }
 
 @theme inline {
@@ -152,13 +153,4 @@
 .animate-float-delayed {
   animation: float 4s ease-in-out infinite;
   animation-delay: 1s;
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
 }

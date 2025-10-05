@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import Link from "next/link";
 
+import { ModeToggle } from "@/components/mode-toggle";
 import { siteConfig } from "@/config/site";
 
 const Navbar = () => {
@@ -53,6 +54,7 @@ const Navbar = () => {
               RSVP
             </a>
           </div>
+          <ModeToggle />
         </div>
       </div>
     </motion.nav>
