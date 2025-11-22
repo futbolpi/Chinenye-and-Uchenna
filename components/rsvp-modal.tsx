@@ -40,7 +40,9 @@ export default function RsvpModal({ trigger, className }: RsvpModalProps) {
     const clean = sanitize(number);
     if (!clean) return;
     const text = encodeURIComponent(
-      `Hi ${name || "there"}, I would like to RSVP for ${siteConfig.name} wedding.`,
+      `Hi ${name || "there"}, I would like to RSVP for ${
+        siteConfig.name
+      } wedding.`,
     );
     const wa = `https://wa.me/${clean}?text=${text}`;
     window.open(wa, "_blank");
@@ -98,7 +100,7 @@ export default function RsvpModal({ trigger, className }: RsvpModalProps) {
           <div style={{ marginTop: 14, display: "grid", gap: 10 }}>
             {siteConfig.rsvp.map((c) => (
               <div
-                key={c.number}
+                key={c.phone}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -130,7 +132,7 @@ export default function RsvpModal({ trigger, className }: RsvpModalProps) {
                       marginTop: 4,
                     }}
                   >
-                    {c.number}
+                    {c.phone}
                   </div>
                 </div>
 
@@ -138,7 +140,7 @@ export default function RsvpModal({ trigger, className }: RsvpModalProps) {
                   <Button
                     size="sm"
                     variant="ghost"
-                    onClick={() => onCall(c.number)}
+                    onClick={() => onCall(c.phone)}
                     aria-label={`Call ${c.name}`}
                   >
                     <Phone className="w-4 h-4" />
@@ -148,7 +150,7 @@ export default function RsvpModal({ trigger, className }: RsvpModalProps) {
                   <Button
                     size="sm"
                     variant="secondary"
-                    onClick={() => onWhatsApp(c.number, c.name)}
+                    onClick={() => onWhatsApp(c.whatsappNumber, c.name)}
                     aria-label={`WhatsApp ${c.name}`}
                   >
                     <MessageSquare className="w-4 h-4" />

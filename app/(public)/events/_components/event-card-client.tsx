@@ -27,8 +27,8 @@ export default function EventCardClient({ event }: { event: EventItem }) {
               src={event.cover}
               alt={event.title}
               fill
-              className="object-cover"
-              sizes="(max-width: 640px) 100vw, 50vw"
+              className="object-cover h-full"
+              // sizes="(max-width: 640px) 100vw, 50vw"
             />
           ) : (
             <div className="h-full w-full flex items-center justify-center text-muted-foreground">
