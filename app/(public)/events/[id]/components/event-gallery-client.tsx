@@ -115,7 +115,8 @@ export default function EventGalleryClient({
                   </h3>
                   {images[selected].alt && (
                     <p className="text-sm text-muted-foreground mt-1">
-                      {images[selected].alt}
+                      {/* {images[selected].alt} */}
+                      ...
                     </p>
                   )}
                 </div>
