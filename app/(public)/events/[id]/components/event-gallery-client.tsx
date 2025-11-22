@@ -62,7 +62,7 @@ export default function EventGalleryClient({
             {img.caption && (
               <div className="absolute bottom-2 left-2 right-2 px-3 py-1 rounded-md bg-[color:var(--color-muted)]/70 backdrop-blur-sm">
                 <p className="text-xs text-muted-foreground truncate">
-                  {img.caption}
+                  {/* {img.caption} */}Gallery
                 </p>
               </div>
             )}
@@ -110,7 +110,8 @@ export default function EventGalleryClient({
               <div className="p-4 flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg text-foreground">
-                    {images[selected].caption ?? `Photo ${selected + 1}`}
+                    {`Photo ${selected + 1}`}
+                    {/* {images[selected].caption ?? `Photo ${selected + 1}`} */}
                   </h3>
                   {images[selected].alt && (
                     <p className="text-sm text-muted-foreground mt-1">

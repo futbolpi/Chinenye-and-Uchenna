@@ -16,15 +16,13 @@ const OurStory = () => {
       </h2>
       <div className="prose prose-lg max-w-none text-muted-foreground">
         <p className="text-xl leading-relaxed mb-6">
-          We met on a rainy Tuesday at a coffee shop downtown. What started as a
-          chance encounter over spilled coffee became the greatest love story of
-          our lives.
+          Nice story to catch at the reception.
         </p>
-        <p className="text-lg leading-relaxed">
+        {/* <p className="text-lg leading-relaxed">
           Three years later, we're ready to say "I do" surrounded by the people
           we love most. Join us as we celebrate this new chapter and the
           beginning of our forever.
-        </p>
+        </p> */}
       </div>
     </motion.div>
   );
